@@ -4,7 +4,7 @@ import diffusers
 import torch
 from PIL import Image
 import os
-
+import uuid
 app = Flask(__name__)
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -21,7 +21,7 @@ pipe = diffusers.DiffusionPipeline.from_pretrained(
 pipe.enable_model_cpu_offload()
 
 # Loading Trained LoRA Weights
-pipe.load_lora_weights("SaharAlhabsi/sdxl-base-1.1-archPlan")
+pipe.load_lora_weights("SaharAlhabsi/sdxl-base-1.0-Floorplan")
 
 
 
@@ -73,22 +73,22 @@ def generate():
     toilet_count = request.form['toilet_count']
     
     # Build the prompt for Stable Diffusion
-    prompt = f"Home floor plan with {building_area} sqft, {room_count} rooms, including {', '.join(rooms)}."
+    prompt = f"floor plan with {building_area} sqft, {room_count} rooms, including {', '.join(rooms)}."
     if has_kitchen:
         prompt += " Include a kitchen."
     if has_store:
         prompt += " Include a store room."
     prompt += f" {toilet_count} toilets."
-
+    # prompt ="2 Bedroom and 1 bathroom and 1 kitchen"
     # Generate the image using the model (with LoRA weights)
     image = pipe(prompt).images[0]
-    
+    unique_id = uuid.uuid4()
     # Save the generated image to a file
-    image_path = "static/floor_plan.png"
+    image_path = f"static/floor_plan_{unique_id}.png"
     image.save(image_path)
 
     # Send the image file as a response to the user
     return send_file(image_path, mimetype='image/png')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8080)
