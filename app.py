@@ -21,7 +21,7 @@ pipe = diffusers.DiffusionPipeline.from_pretrained(
 pipe.enable_model_cpu_offload()
 
 # # Loading Trained LoRA Weights
- pipe.load_lora_weights("SaharAlhabsi/sdxl-base-1.0-Floorplan")
+pipe.load_lora_weights("SaharAlhabsi/sdxl-base-1.0-Floorplan")
 
 
 
