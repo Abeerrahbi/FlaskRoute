@@ -160,7 +160,32 @@
     </div>
 
     </div>
+  <!-- JavaScript -->
+    <script>
+        document.getElementById("generateBtn").addEventListener("click", function() {
+            // Show the loading modal
+            document.getElementById("loadingModal").style.display = "block";
 
+            // Submit the form or make an AJAX request
+            fetch('/generate', {
+                method: 'POST',
+            }).then(response => {
+                // Hide the loading modal when the request is complete
+                document.getElementById("loadingModal").style.display = "none";
+
+                // Handle the response (if any)
+                if (response.ok) {
+                    alert("Generation successful!");
+                } else {
+                    alert("Something went wrong. Please try again.");
+                }
+            }).catch(error => {
+                // Hide the loading modal and show an error message
+                document.getElementById("loadingModal").style.display = "none";
+                alert("An error occurred. Please try again later.");
+            });
+        });
+    </script>
     <script>
         // Dynamically add room inputs based on room count
         document.getElementById('room_count').addEventListener('change', function() {
