@@ -97,6 +97,24 @@
                 font-size: 14px;
             }
         }
+          /* Modal styling */
+        #loadingModal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000; /* On top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0,0,0,0.5);
+        }
+        #loadingModal .modal-content {
+            margin: 15% auto;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -122,16 +140,25 @@
             <label for="toilet_count">Number of Toilets:</label>
             <input type="number" id="toilet_count" name="toilet_count" placeholder="Enter number of toilets"><br><br>
 
-            <button type="submit">Generate Floor Plan</button>
+            <button id="generateBtn" type="submit">Generate Floor Plan</button>
         </form>
+<!-- Loading Modal -->
+<div id="loadingModal">
+    <div class="modal-content bg-light text-dark rounded">
+        <p>Loading Map... Please wait.</p>
+    </div>
+</div>
+    <!-- Section to display the generated image -->
+    <div class="generated-image">
+        {% if request.method == 'POST' %}
+        <h2>Your Generated Floor Plan:</h2>
+        <img src="/static/floor_plan.png" alt="Generated Floor Plan">
+    
+        <!-- Download Button -->
+        <a href="/static/floor_plan.png" download="Generated_Floor_Plan.png" class="btn btn-success mt-3">Download Image</a>
+        {% endif %}
+    </div>
 
-        <!-- Section to display the generated image -->
-        <div class="generated-image">
-            {% if request.method == 'POST' %}
-                <h2>Your Generated Floor Plan:</h2>
-                <img src="/static/floor_plan.png" alt="Generated Floor Plan">
-            {% endif %}
-        </div>
     </div>
 
     <script>
