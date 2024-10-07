@@ -63,7 +63,7 @@
 
             <i class='bx bx-moon change-theme' id="theme-button" style="color:black;"></i>
 
-            <a href="#" class="nav__button button">Subscribe</a>
+            <a href="{{ url_for('static', filename='/templates/flask_index.html')}}" class="nav__button button">Get Started</a>
         </nav>
     </header>
 
@@ -83,9 +83,7 @@
 
 
 
-                    <a href="#" class="button subscribe__button">
-                        Get Started
-                    </a>
+               
 
 
                     <div class="home__value">
@@ -122,7 +120,7 @@
                     <div class="home__orbe"></div>
 
                     <div class="home__img">
-                        <img src="{{ url_for('static', filename='templates/assets/img/home.jpg')}}" alt="">
+                        <img src="{{ url_for('static', filename='assets/img/home.jpg')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -143,19 +141,7 @@
                     
                 </div>
             </section>-->
-        <!--==================== LOGOS ====================-->
-        <div class="logos">
-            <div class="logos-slide">
-                <img src="{{ url_for('static', filename='assets/img/logo1.jpg') }}" />
-                <img src="{{ url_for('static', filename='assets/img/logo1.png') }}" />
-                <img src="{{ url_for('static', filename='assets/img/MOH_v1_1.jpg') }}" />
-                <img src="{{ url_for('static', filename='assets/img/logo1.png') }}" />
-                <img src="{{ url_for('static', filename='assets/img/logo1.jpg') }}" />
-            </div>
-        </div>
-
-
-
+       
 
 
         <!--==================== POPULAR ====================-->
@@ -344,6 +330,30 @@
                 </div>
             </div>
         </section>
+
+         <!--==================== LOGOS ====================-->
+         <div class="logos">
+            <div class="logos-slide">
+                <img src="{{ url_for('static', filename='assets/img/logo1.jpg') }}" />
+                <img src="{{ url_for('static', filename='assets/img/logo1.png') }}" />
+                <img src="{{ url_for('static', filename='assets/img/MOH_v1_1.jpg') }}" />
+                <img src="{{ url_for('static', filename='assets/img/minsibility.jpg') }}" />
+                <img src="{{ url_for('static', filename='assets/img/Diam.png') }}" />
+                <img src="{{ url_for('static', filename='assets/img/emergincy.png') }}" />
+                <img src="{{ url_for('static', filename='assets/img/Namal.png') }}" />
+                <img src="{{ url_for('static', filename='assets/img/logo1.jpg') }}" />
+                <img src="{{ url_for('static', filename='assets/img/logo1.png') }}" />
+                <img src="{{ url_for('static', filename='assets/img/MOH_v1_1.jpg') }}" />
+                <img src="{{ url_for('static', filename='assets/img/minsibility.jpg') }}" />
+                <img src="{{ url_for('static', filename='assets/img/Diam.png') }}" />
+                <img src="{{ url_for('static', filename='assets/img/emergincy.png') }}" />
+                <img src="{{ url_for('static', filename='assets/img/Namal.png') }}" />
+            
+            </div>
+        </div>
+
+
+
         <!--==================== CONTACT ====================-->
         <section class="contact section" id="contact">
             <div class="contact__container container grid">
@@ -576,10 +586,10 @@
     <script src="{{ url_for('static', filename='templates/assets/js/particles.js')}}"></script>
     <script src="{{ url_for('static', filename='templates/assets/js/app.js')}}"></script>
     <script src="{{ url_for('static', filename='templates/assets/js/jquery-3.2.1.min.js')}}"></script>
-    <script>
+    <!-- <script>
         var copy = document.querySelector(".logos-slide").cloneNode(true);
         document.querySelector(".logos").appendChild(copy);
-    </script>
+    </script> -->
 </body>
 
 </html>
