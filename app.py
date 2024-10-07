@@ -10,18 +10,18 @@ app = Flask(__name__)
 # device = "cuda" if torch.cuda.is_available() else "cpu"
 # print(device)
 # # Load Stable Diffusion XL Base1.0
-# pipe = diffusers.DiffusionPipeline.from_pretrained(
-#     "stabilityai/stable-diffusion-xl-base-1.0",
-#     # torch_dtype=torch.float16,
-#     # variant="fp16",
-#     use_safetensors=True
-# ).to(device)
+pipe = diffusers.DiffusionPipeline.from_pretrained(
+    "stabilityai/stable-diffusion-xl-base-1.0",
+    # torch_dtype=torch.float16,
+    # variant="fp16",
+    use_safetensors=True
+).to(device)
 
 # # Optional CPU offloading to save some GPU Memory
-# pipe.enable_model_cpu_offload()
+pipe.enable_model_cpu_offload()
 
 # # Loading Trained LoRA Weights
-# pipe.load_lora_weights("SaharAlhabsi/sdxl-base-1.0-Floorplan")
+ pipe.load_lora_weights("SaharAlhabsi/sdxl-base-1.0-Floorplan")
 
 
 
